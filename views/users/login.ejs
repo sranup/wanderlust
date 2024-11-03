@@ -1,0 +1,42 @@
+<% layout('/layouts/boilerplate') -%>
+    <% if(errorMsg && errorMsg.length){%>
+        <div class="alert alert-danger alert-dismissible col-6 offset-3" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <%=errorMsg%>
+        </div>
+        <% } %>
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <div class="mb-3 mt-3">
+                        <h3>Login for Wanderlust</h3>
+                    </div>
+                    <form method="post" class="needs-validation" novalidate action="/login">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Enter Username
+                            </div>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Enter Email
+                            </div>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Enter Password
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary mb-3">Login</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>

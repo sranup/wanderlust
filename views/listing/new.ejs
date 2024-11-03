@@ -1,0 +1,71 @@
+<% layout('/layouts/boilerplate') -%>
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <br /><br />
+            <h3>Create New List</h3>
+            <form method="post" action="/listings/new" class="needs-validation" novalidate
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label text-capitalize"><%=formLabels.title%></label>
+                    <input type="text" name="listing[title]" placeholder="enter title" class="form-control" required />
+                    <div class="valid-feedback">Title looks good</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label text-capitalize"><%=formLabels.description%></label>
+                    <textarea name="listing[description]" placeholder="enter description" class="form-control"
+                        required></textarea>
+                    <div class="valid-feedback">nice description</div>
+                    <div class="invalid-feedback">Please enter valid description</div>
+                </div>
+                <!-- <div class="mb-3 ">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" name="listing[image]" placeholder="post image/enter url" class="form-control" />
+                </div> -->
+                <div class="mb-3 ">
+                    <label for="image" class="form-label text-capitalize">Upload listing <%=formLabels.image%></label>
+                    <input type="file" name="listing[image]" class="form-control" required />
+                    <div class="invalid-feedback">Please Upload Photos</div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label text-capitalize"><%=formLabels.price%></label>
+                        <input name="listing[price]" placeholder="1200" class="form-control" required />
+                        <div class="invalid-feedback">Please enter valid price</div>
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="location" class="form-label text-capitalize"><%=formLabels.location%></label>
+                        <input type="text" name="listing[location]" placeholder="Malpe,Karnataka" class="form-control"
+                            required />
+                        <div class="invalid-feedback">Please enter valid location</div>
+
+                    </div>
+                </div>
+                <div class="row d-flex align-items-center">
+                    <div class="mb-3 col-md-6">
+                        <label for="country" class="form-label text-capitalize"><%=formLabels.country%></label>
+                        <input type="text" name="listing[country]" placeholder="India" class="form-control" required />
+                        <div class="invalid-feedback">Please enter valid country</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom04" class="form-label text-capitalize"><%=formLabels.category%></label>
+                        <select class="form-select" id="validationCustom04" name="listing[category]" required>
+                            <option selected disabled value="">Choose...</option>
+                            <% for(let category of categories){%>
+                                <option value="<%= category %>">
+                                    <%= category %>
+                                </option>
+                                <%}%>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a Category
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-dark add-btn">add</button>
+                <br /><br />
+
+            </form>
+        </div>
+    </div>

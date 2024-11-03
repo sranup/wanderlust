@@ -1,0 +1,73 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <br /><br />
+            <h3>Edit This List</h3>
+            <form method="post" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label text-capitalize"><%=formLabels.title%></label>
+                    <input type="text" name="listing[title]" value="<%=listing.title%>" class="form-control" required />
+                    <div class="invalid-feedback">please enter valid title</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label text-capitalize"><%=formLabels.description%></label>
+                    <textarea name="listing[description]" class="form-control"
+                        required><%=listing.description%></textarea>
+                    <div class="invalid-feedback">please enter valid description</div>
+
+                </div>
+                <div class="mb-3 text-capitalize">
+                    Original Listing <%=formLabels.image%><br />
+                    <img src="<%=originalImageUrl%>" />
+                </div>
+                <div class="mb-3 text-capitalize">
+                    <label for="description" class="form-label">Upload <%=formLabels.image%></label>
+                    <input type="file" name="listing[image]" class="form-control" />
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4 text-capitalize">
+                        <label for="price" class="form-label"><%=formLabels.price%></label>
+                        <input type="number" name="listing[price]" value="<%=listing.price%>" class="form-control"
+                            required />
+                        <div class="invalid-feedback">please enter valid price</div>
+
+                    </div>
+                    <div class="mb-3 col-md-8 text-capitalize">
+                        <label for="location" class="form-label"><%=formLabels.location%></label>
+                        <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control"
+                            required />
+                        <div class="invalid-feedback">please enter valid location</div>
+                    </div>
+                </div>
+                <div class="row d-flex text-capitalize">
+                    <div class="col-md-4 mb-3">
+                        <label for="location" class="form-label"><%=formLabels.country%></label>
+                        <input type="text" name="listing[country]" value="<%=listing.country%>" class="form-control"
+                            required />
+                        <div class="invalid-feedback">please enter valid country</div>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <label for="validationCustom04" class="form-label text-capitalize"><%=formLabels.category%></label>
+                        <select class="form-select" id="validationCustom04" name="listing[category]" required>
+                            <option selected disabled value="<%=listing.category %>">
+                                <%=listing.category %>
+                            </option>
+                            <% for(let category of categories){ %>
+                                <option value="<%= category %>" <%=listing.category===category ? 'selected' : '' %> >
+                                    <%= category %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a Category
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-dark edit-btn">edit</button>
+                <br /><br />
+            </form>
+        </div>
+    </div>
